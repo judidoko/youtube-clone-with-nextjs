@@ -10,8 +10,6 @@ export async function fetchVideos(query: string, maxResult: number) {
       `${BASE_URL}/search?key=${API_KEY}&q=${query}&order=date&maxResults=${maxResult}&type=video&part=snippet`
     );
 
-    console.log(data);
-
     const videos: Video[] = [];
 
     for (const video of data.items) {
