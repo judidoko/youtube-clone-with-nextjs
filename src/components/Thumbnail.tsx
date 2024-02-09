@@ -1,7 +1,9 @@
 import Link from "next/link";
+import { Dot } from "lucide-react";
 import { Video } from "../../types/custom_types";
 import Image from "next/image";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { formatCount, formatPublishedDate } from "@/lib/utils";
 
 const Thumbnail = ({ video }: { video: Video }) => {
   return (
@@ -30,13 +32,15 @@ const Thumbnail = ({ video }: { video: Video }) => {
           </Avatar>
           <div className="flex flex-col">
             <h4 className="scroll-m-20 text-lg font-bold tracking-tight">
-              {video.title.substring(0, 60)}
+              {video.title.substring(0, 40)}
             </h4>
             <p className="text-sm text-background-dark dark:text-background-light">
               {video.channel.channelTitle}
             </p>
             <div className="flex text-sm dark:text-background-light text-background-dark">
-              <p></p>
+              <p>{formatCount(+video.viewCount)}</p>
+              <Dot />
+              <p>{formatPublishedDate(video.publishedDate)}</p>
             </div>
           </div>
         </div>
