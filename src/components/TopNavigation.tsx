@@ -2,7 +2,7 @@
 
 import { Bell, Menu, Search, Video, YoutubeIcon } from "lucide-react";
 import Link from "next/link";
-import { FormEvent, useRef, useState } from "react";
+import { FormEvent, useContext, useRef, useState } from "react";
 import { ThemeToggle } from "./ThemeToggle";
 import { Dialog, DialogContent } from "./ui/dialog";
 import { DialogTrigger } from "@radix-ui/react-dialog";
@@ -14,10 +14,13 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import AppContext from "@/context/appContext";
 
 const TopNavigation = () => {
   // Hook To Open the dialog
   const [dialogOpen, setDialogOpen] = useState(false);
+  // useContext
+  const { setShowNav } = useContext(AppContext);
   // Search input
   const searchRef = useRef<HTMLInputElement>(null);
   // OnSubmit button
@@ -32,7 +35,10 @@ const TopNavigation = () => {
       <div className="flex justify-between ic px-2 md:px-7 h-16 ">
         <div className="flex items-center">
           <span className="hover:bg-background-dark/30 md:block hidden hover:text-white cursor-pointer rounded-full p-2 mr-1">
-            <Menu size={30} />
+            <Menu
+              onClick={() => setShowNav((prevstate) => !prevstate)}
+              size={30}
+            />
           </span>
           <Link href="/" className="flex items-center space-x-2">
             <YoutubeIcon size={40} className="text-red-700" />
@@ -105,7 +111,11 @@ const TopNavigation = () => {
                         <p>Code with Jude</p>
                         <p>@codewithjude</p>
                       </span>
-                      <Link href={`/channel`}>View your channel</Link>
+                      <Link
+                        href={`/channel/${process.env.NEXT_PUBLIC_CHANNEL_ID}`}
+                      >
+                        View your channel
+                      </Link>
                     </div>
                   </div>
                 </DropdownMenuLabel>

@@ -69,7 +69,7 @@ const Sidebar = ({ className }: Props) => {
             </h2>
 
             <div className="space-y-1">
-              <Link href={`/channels/${process.env.NEXT_PUBLIC_CHANNEL_ID}`}>
+              <Link href={`/channel/${process.env.NEXT_PUBLIC_CHANNEL_ID}`}>
                 <Button
                   variant="ghost"
                   className="w-full justify-start font-light"
