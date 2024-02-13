@@ -28,9 +28,9 @@ const Loading = () => {
                   <h4 className="text-gray-600 dark:text-white">
                     <Skeleton className="h-4 w-[60%]" />
                   </h4>
-                  <p className="text-gray-400 text-sm">
+                  <div className="text-gray-400 text-sm">
                     <Skeleton className="h-4 w-[40%]" />
-                  </p>
+                  </div>
                 </div>
               </div>
               <div className="flex space-x-4 text-sm items-center bg-gray-600 text-white px-2 md:px-5 rounded-3xl">
@@ -49,9 +49,9 @@ const Loading = () => {
           </div>
 
           <div className="p-3 bg-gray-600 text-white rounded-md my-4">
-            <p className="leading-8">
+            <div className="leading-8">
               <Skeleton className="h-4 w-[90%]" />
-            </p>
+            </div>
           </div>
         </div>
         <div className="md:col-span-4 col-span-12">
